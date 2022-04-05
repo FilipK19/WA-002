@@ -11,7 +11,7 @@
             label="First Name"
             filled
           ></v-text-field>
-          <v-btn color="success" class="mb-5" @click="mounted">Submit</v-btn>
+          <v-btn color="success" class="mb-5" @click="submit">Submit</v-btn>
         </v-col>
       {{prvo}}
       {{ime}}
@@ -31,7 +31,10 @@ export default {
       ime: ""
     };
   },
-  async mounted() {
+  
+  methods: {
+  async submit() {
+      
     let rezultat = await fetch(
       'https://api.nationalize.io?name=' + this.ime
     );
@@ -40,5 +43,6 @@ export default {
 
     this.prvo = podaci;
   },
+  }
 }
 </script>
